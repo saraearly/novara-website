@@ -1,95 +1,86 @@
-# React.js landing page template v2
+# NOVARA - Innovate Medical Intelligence
 
-## <a href="https://react-landing-page-template-2021.vercel.app/"> LIVE DEMO</a>
+Landing page for NOVARA, a medical AI company that designs, validates, and deploys reliable machine-learning models for healthcare and clinical research.
 
-<img src="public/assets/gifs/demo.gif" width="100%" height="auto" />
+## Tech Stack
 
-### Description
+- **Framework:** [Next.js 12](https://nextjs.org) (static export)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) (JIT mode) + PostCSS
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) + custom canvas animations
+- **Icons:** [Heroicons](https://heroicons.com/)
+- **Smooth Scroll:** [react-scroll](https://github.com/fisshy/react-scroll)
 
-This is a React.js/Next.js based landing page plug-n-play template, ideal for startups/companies/service providers wanting to showcase their vision in a single page sleek and modern landing page.
+## Getting Started
 
-### Features
+### Prerequisites
 
-- 📱  Responsive design
-- 🔥 [Next.js](https://nextjs.org) for Static Site Generator
+- Node.js
+- Yarn
 
-- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com) (w/ JIT mode)
+### Install dependencies
 
-- 💅 PostCSS for processing Tailwind CSS and integrated to `styled-jsx`
-
-- 🎉 Type checking [TypeScript](https://www.typescriptlang.org)
-
-- 🗂 VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript
-
-- 🤖 SEO metadata, JSON-LD and Open Graph tags with Next SEO
-
-- 🖱️ One click deployment with Vercel or Netlify (or manual deployment to any hosting services)
-
-Built-in feature from Next.js:
-
-- ☕ Minify HTML & CSS
-- 💨 Live reload
-- ✅ Cache busting
-
-### Make it your own
-
-#### 1. Clone repo
-
-```
-git clone https://github.com/issaafalkattan/react-landing-page-template-2021.git
-cd react-landing-page-template-2021
+```bash
 yarn
 ```
 
-Then, you can run locally in development mode with live reload:
+### Run development server
 
-```
+```bash
 yarn dev
 ```
 
-Open <http://localhost:3000> with your favorite browser to see your project.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-#### 2. Add your own content
+### Build for production
 
- 1. **Content**: change the configuration in the ```src/config/index.json``` file to change the content of the landing page to match your use ```src/config/index.json```  folder and .
- 2. **Images**:  add any images/icons..etc to the ```public/assets/images```  folder and update their reference source in ```src/config/index.json```.
- 3. **Theme**:  to change the theme, update the ```tailwind.config.js```  file to match the theme of your branding. [Tutorial](https://tailwindcss.com/docs/configuration).
-
-#### 3. Deploy to production
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fissaafalkattan%2Freact-landing-page-template-2021)
-
-##### Deploy manually
-
-You can see the results locally in production mode with:
-
-  ```
-yarn build
-yarn start
-```
-
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
-
-You can create an optimised production build with:
-
-```
+```bash
 yarn build-prod
 ```
 
-### Contributions
+This cleans the output directory, builds the project, and exports static HTML to the `out/` folder.
 
-Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug.
+### Lint
 
-### License
+```bash
+yarn lint
+```
 
-Licensed under the MIT License, Copyright © 2021
-  
+### Type check
 
-## Liked this template? <a href="https://www.buymeacoffee.com/issaaf">Buy me a coffee ☕️</a>
+```bash
+yarn build-types
+```
 
+## Project Structure
 
+```
+src/
+  components/    # React components (Header, HeroSection, Product, etc.)
+  config/        # index.json - all page content (text, images, team, projects)
+  hooks/         # Custom hooks (useCanvas, useResponsiveSize)
+  pages/         # Next.js pages (single-page app)
+  styles/        # Global CSS with Tailwind
+  utils/         # Canvas animation classes (HexNet, NetworkAnimation)
+public/
+  assets/images/ # All images referenced from config
+```
 
+## Content Management
 
----
+All page content is driven by `src/config/index.json`. To update text, images, team members, or projects, edit this file. Images are stored in `public/assets/images/`.
 
-### Looking for v1? <a href="https://github.com/issaafalkattan/React-Landing-Page-Template">V1</a>
+## Customization
+
+- **Theme colors:** Edit `tailwind.config.js` (primary: `#2685ba`, secondary: `#24272B`)
+- **Fonts:** Google Sans (configured in `tailwind.config.js` and loaded in `_document.tsx`)
+
+## Deployment
+
+The site can be deployed as static HTML. The `out/` directory contains the production build after running `yarn build-prod`.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsaraearly%2Fnovara_testing)
+
+## License
+
+Licensed under the MIT License.
