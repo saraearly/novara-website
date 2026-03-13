@@ -1,8 +1,8 @@
+/* eslint-disable */
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 
 import config from "../config/index.json";
-import Divider from "./Divider";
 
 function useOnScreen(
   ref: MutableRefObject<HTMLDivElement | null>,
@@ -77,14 +77,19 @@ const StackedCard = ({
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
+    return undefined;
   }, []);
 
   // Create staggered initial positions for stacked effect
   const rowIndex = index % 2; // 0 for left column, 1 for right column
   const stackOffset = rowIndex * 10;
-  const initialX = isMobile ? 0 : (rowIndex === 0 ? -30 - stackOffset : 30 + stackOffset);
+  const initialX = isMobile
+    ? 0
+    : rowIndex === 0
+    ? -30 - stackOffset
+    : 30 + stackOffset;
   const initialY = 40;
-  const initialRotate = isMobile ? 0 : (rowIndex === 0 ? -3 : 3);
+  const initialRotate = isMobile ? 0 : rowIndex === 0 ? -3 : 3;
 
   return (
     <motion.div
@@ -114,16 +119,18 @@ const StackedCard = ({
           boxShadow: isExpanded
             ? "0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1)"
             : `
-              0 ${8 + rowIndex * 2}px ${20 + rowIndex * 3
-            }px rgba(0, 0, 0, 0.12),
+              0 ${8 + rowIndex * 2}px ${
+                20 + rowIndex * 3
+              }px rgba(0, 0, 0, 0.12),
               0 ${4 + rowIndex}px ${8 + rowIndex}px rgba(0, 0, 0, 0.08),
               inset 0 1px 0 rgba(255, 255, 255, 0.6)
             `,
           transform: isMobile
             ? "none"
             : isExpanded
-              ? "perspective(1000px) rotateY(0deg) translateZ(0)"
-              : `perspective(1000px) rotateY(${rowIndex === 0 ? -1 : 1
+            ? "perspective(1000px) rotateY(0deg) translateZ(0)"
+            : `perspective(1000px) rotateY(${
+                rowIndex === 0 ? -1 : 1
               }deg) translateZ(0)`,
         }}
         transition={{ duration: 0.3 }}
@@ -146,24 +153,16 @@ const Projects = () => {
   return (
     <section className={`bg-background py-6`} id="projects">
       <div className={`container max-w-5xl mx-auto m-4 px-4`}>
-        <h1
-          className={`w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-center flex flex-col md:flex-row items-center justify-center`}
-        >
-          <span
-            className="bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #7B2FF7 0%, #18D3C5 100%)",
-            }}
-          >
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900 mb-4 max-w-4xl mx-auto">
             {title}
-          </span>
-        </h1>
-        <Divider />
-        {subtitle && (
-          <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-8 mt-4">
-            {subtitle}
-          </p>
-        )}
+          </h2>
+          {subtitle && (
+            <p className="text-lg text-gray-600 font-medium tracking-wide max-w-4xl mx-auto">
+              {subtitle}
+            </p>
+          )}
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
           {items.map((project, index) => {
             const isExpanded = expandedIndex === index;
@@ -187,8 +186,9 @@ const Projects = () => {
                 <div className="flex flex-col h-full relative">
                   <div className="w-full mb-3 flex-shrink-0">
                     <img
-                      className={`w-full object-contain rounded-lg transition-all duration-300 ${isExpanded ? "h-64" : "h-48"
-                        }`}
+                      className={`w-full object-contain rounded-lg transition-all duration-300 ${
+                        isExpanded ? "h-64" : "h-48"
+                      }`}
                       src={project.img}
                       alt={project.title}
                     />

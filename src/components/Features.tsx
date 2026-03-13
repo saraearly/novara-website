@@ -8,22 +8,18 @@ const Features = () => {
   return (
     <div className={`py-12 bg-background`} id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
-          <h2
-            className={`text-base font-semibold tracking-wide uppercase bg-clip-text text-transparent`}
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #7B2FF7 0%, #18D3C5 100%)",
-            }}
-          >
+        <div className="text-center mb-16">
+          <p className="text-sm text-gray-500 font-medium mb-4 uppercase tracking-wider">
             {title}
-          </h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900 mb-4 max-w-4xl mx-auto">
             {subtitle}
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            {description}
-          </p>
+          </h2>
+          {description && (
+            <p className="text-lg text-gray-600 font-medium tracking-wide max-w-2xl mx-auto">
+              {description}
+            </p>
+          )}
         </div>
 
         <div className="mt-10">

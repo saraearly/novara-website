@@ -15,36 +15,24 @@ const Pricing = () => {
   const { subgroups, title, subtitle } = pricing;
 
   return (
-    <section className={`bg-background py-8`} id="pricing">
-      <div className={`container mx-auto px-4 pt-4 pb-12`}>
-        <h1
-          className={`w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-center`}
-        >
-          <span
-            className="bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #7B2FF7 0%, #18D3C5 100%)",
-            }}
-          >
+    <section className="bg-[#FAFAFA] py-16 lg:py-24" id="pricing">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900 mb-4 max-w-4xl mx-auto">
             {title}
-          </span>
-        </h1>
-        <div className={`w-full mb-4`}>
-          <div
-            className={`h-1 mx-auto bg-primary w-64 opacity-25 my-0 py-0 rounded-t`}
-          ></div>
+          </h2>
+          {subtitle && (
+            <p className="text-lg text-gray-600 font-medium tracking-wide">
+              {subtitle}
+            </p>
+          )}
         </div>
-        {subtitle && (
-          <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-12 mt-8">
-            {subtitle}
-          </p>
-        )}
 
         {subgroups.map((subgroup) => (
-          <div key={subgroup.name} className="mb-8 last:mb-0">
-            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
+          <div key={subgroup.name} className="mb-12 last:mb-0">
+            <h3 className="text-3xl font-bold text-center text-gray-800 mb-8">
               {subgroup.name}
-            </h2>
+            </h3>
             {subgroup.items.length > 0 ? (
               <div
                 className={
@@ -56,30 +44,52 @@ const Pricing = () => {
                 {(subgroup.items as TeamMember[]).map((member, index) => (
                   <div
                     key={`${member.name}-${index}`}
-                    className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ${subgroup.name === "Senior Advisor"
-                      ? "max-w-sm w-full"
-                      : ""
-                      }`}
+                    className={`bg-white rounded-[2rem] p-6 sm:p-8 flex flex-col border-2 border-gray-100/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 ${
+                      subgroup.name === "Senior Advisor"
+                        ? "max-w-sm w-full"
+                        : ""
+                    }`}
                   >
-                    <div className="relative w-full aspect-square overflow-hidden bg-gray-200">
+                    <div className="w-20 h-20 rounded-full overflow-hidden mb-6 flex-shrink-0 bg-gray-100">
                       <img
                         src={member.image}
                         alt={member.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="p-4 text-center">
-                      <div className="flex items-center justify-center gap-2 mb-1">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                          {member.name}
-                        </h3>
+
+                    <div className="flex-grow">
+                      <h3 className="text-2xl font-medium text-gray-900 mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-gray-400 font-medium mb-6 text-sm">
+                        {member.role}
+                      </p>
+                    </div>
+
+                    {(member.degree || member.linkedin) && (
+                      <div className="mt-auto pt-4 border-t border-gray-50 flex flex-col items-start gap-4">
+                        {member.degree && (
+                          <div className="flex items-start text-left">
+                            <svg
+                              className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-0.5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                            </svg>
+                            <p className="text-sm text-gray-600">
+                              {member.degree}
+                            </p>
+                          </div>
+                        )}
                         {member.linkedin && (
                           <a
                             href={member.linkedin}
                             target="_blank"
                             rel="noreferrer"
                             aria-label={`${member.name} LinkedIn`}
-                            className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+                            className="text-gray-400 hover:text-primary transition-colors self-end"
                           >
                             <svg
                               className="w-5 h-5 fill-current"
@@ -91,26 +101,7 @@ const Pricing = () => {
                           </a>
                         )}
                       </div>
-                      <p className="text-primary font-semibold mb-2 text-sm">
-                        {member.role}
-                      </p>
-                      <div className="mb-3 space-y-1">
-                        {member.degree && (
-                          <div className="flex items-center justify-center">
-                            <svg
-                              className="w-4 h-4 text-primary mr-1.5 flex-shrink-0"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-                            </svg>
-                            <p className="text-xs text-gray-700 dark:text-gray-300">
-                              {member.degree}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                    )}
                   </div>
                 ))}
               </div>

@@ -4,7 +4,7 @@ import config from "../config/index.json";
 
 const About = () => {
   const { company, about } = config;
-  const { logo, name: companyName } = company;
+  const { name: companyName } = company;
   const { sections = [] } = about;
 
   return (
@@ -13,7 +13,6 @@ const About = () => {
       className="mx-auto container xl:px-20 lg:px-12 sm:px-6 px-4 py-8"
     >
       <div className="flex flex-col items-center justify-center">
-
         {sections && sections.length > 0 && (
           <div className="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-4 h-12">
             {sections.map((section: any, index: number) => (
