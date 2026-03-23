@@ -6,11 +6,15 @@ import { NetworkAnimation } from "../utils/networkAnimation";
 type NetworkGraphAnimationProps = {
   color?: string;
   particleCount?: number;
+  connectionDistance?: number;
+  speed?: number;
 };
 
 const NetworkGraphAnimation: FC<NetworkGraphAnimationProps> = ({
   color = "#18D3C5",
   particleCount = 50,
+  connectionDistance = 150,
+  speed = 1.5,
 }) => {
   const { context } = useCanvasContext();
   const { width, height } = useResponsiveSize();
@@ -18,10 +22,15 @@ const NetworkGraphAnimation: FC<NetworkGraphAnimationProps> = ({
 
   useEffect(() => {
     if (width > 0 && height > 0) {
-      animRef.current = new NetworkAnimation(color, particleCount, 150);
+      animRef.current = new NetworkAnimation(
+        color,
+        particleCount,
+        connectionDistance,
+        speed
+      );
       animRef.current.init(width, height);
     }
-  }, [width, height, color, particleCount]);
+  }, [width, height, color, particleCount, connectionDistance, speed]);
 
   const render = () => {
     if (context && animRef.current) {

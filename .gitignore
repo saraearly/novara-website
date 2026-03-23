@@ -5,6 +5,7 @@ __pycache__/
 
 
 .next/
+out/
 .husky/
 .vscode/
 .DS_Store

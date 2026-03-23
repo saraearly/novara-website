@@ -63,21 +63,25 @@
     "items": [
       {
         "title": "Medical Analytics Solutions",
+        "shortTitle": "Medical Analytics",
         "description": "We transform complex clinical and imaging data into clear, actionable insights to support diagnostics, clinical decision-making, and operational efficiency.",
         "img": "/assets/images/med_analytics_solutions.PNG"
       },
       {
         "title": "Deep Learning Modeling",
+        "shortTitle": "Deep Learning",
         "description": "We design, train, and optimize custom deep learning models—including computer vision, multimodal architectures, and predictive pipelines—tailored to your medical data and use case.",
         "img": "/assets/images/deep_learning.PNG"
       },
       {
         "title": "Actionable Insights from Clinical Data",
+        "shortTitle": "Clinical Insights",
         "description": "We uncover clinically meaningful patterns from structured and unstructured datasets to guide treatment planning, trial design, and strategic decision-making.",
         "img": "/assets/images/clinical_data_insights.PNG"
       },
       {
         "title": "Predictive Analytics",
+        "shortTitle": "Predictive Analytics",
         "description": "We develop prognostic models that forecast patient outcomes, treatment responses, and disease progression to support risk stratification and personalized medicine.",
         "img": "/assets/images/predictive_analytics.PNG"
       }

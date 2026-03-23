@@ -163,7 +163,7 @@ const Projects = () => {
             </p>
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 max-w-5xl mx-auto">
           {items.map((project, index) => {
             const isExpanded = expandedIndex === index;
             const hasAdditionalInfo =
@@ -184,23 +184,23 @@ const Projects = () => {
                 isExpanded={isExpanded}
               >
                 <div className="flex flex-col h-full relative">
-                  <div className="w-full mb-3 flex-shrink-0">
+                  <div className="w-full mb-2 flex-shrink-0">
                     <img
                       className={`w-full object-contain rounded-lg transition-all duration-300 ${
-                        isExpanded ? "h-64" : "h-48"
+                        isExpanded ? "h-44" : "h-32"
                       }`}
                       src={project.img}
                       alt={project.title}
                     />
                   </div>
-                  <div className="flex-1 flex flex-col p-3 relative">
+                  <div className="flex-1 flex flex-col p-2 relative">
                     <h3
-                      className={`text-2xl text-gray-800 font-bold leading-tight mb-2 text-center`}
+                      className={`text-lg text-gray-800 font-bold leading-tight mb-1 text-center`}
                     >
                       {project.title}
                     </h3>
                     <p
-                      className={`text-base text-gray-600 leading-relaxed mb-3`}
+                      className={`text-sm text-gray-600 leading-relaxed mb-2`}
                     >
                       {project.description}
                     </p>
@@ -216,10 +216,10 @@ const Projects = () => {
                         >
                           {project.additionalInfo && (
                             <div>
-                              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                              <h4 className="text-sm font-semibold text-gray-800 mb-1">
                                 Additional Information
                               </h4>
-                              <p className="text-base text-gray-600 leading-relaxed">
+                              <p className="text-xs text-gray-600 leading-relaxed">
                                 {project.additionalInfo}
                               </p>
                             </div>
@@ -228,15 +228,15 @@ const Projects = () => {
                           {project.technologies &&
                             project.technologies.length > 0 && (
                               <div>
-                                <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                                <h4 className="text-sm font-semibold text-gray-800 mb-1">
                                   Technologies Used
                                 </h4>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1">
                                   {project.technologies.map(
                                     (tech, techIndex) => (
                                       <span
                                         key={techIndex}
-                                        className="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-full text-sm font-medium"
+                                        className="px-2 py-0.5 bg-primary bg-opacity-10 text-primary rounded-full text-xs font-medium"
                                       >
                                         {tech}
                                       </span>
@@ -249,20 +249,20 @@ const Projects = () => {
                           {project.publishedPapers &&
                             project.publishedPapers.length > 0 && (
                               <div>
-                                <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                                <h4 className="text-sm font-semibold text-gray-800 mb-1">
                                   Published Papers
                                 </h4>
-                                <div className="space-y-3">
+                                <div className="space-y-2">
                                   {project.publishedPapers.map(
                                     (paper, paperIndex) => (
                                       <div
                                         key={paperIndex}
-                                        className="border-l-4 border-primary pl-3 py-2"
+                                        className="border-l-3 border-primary pl-2 py-1"
                                       >
-                                        <p className="font-medium text-gray-800">
+                                        <p className="font-medium text-gray-800 text-xs">
                                           {paper.title}
                                         </p>
-                                        <p className="text-sm text-gray-600">
+                                        <p className="text-xs text-gray-600">
                                           {paper.authors} - {paper.journal} (
                                           {paper.year})
                                         </p>

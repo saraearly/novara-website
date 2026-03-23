@@ -44,13 +44,13 @@ const Pricing = () => {
                 {(subgroup.items as TeamMember[]).map((member, index) => (
                   <div
                     key={`${member.name}-${index}`}
-                    className={`bg-white rounded-[2rem] p-6 sm:p-8 flex flex-col border-2 border-gray-100/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 ${
+                    className={`bg-white rounded-[2rem] p-5 sm:p-6 flex flex-col border-2 border-gray-100/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 ${
                       subgroup.name === "Senior Advisor"
                         ? "max-w-sm w-full"
                         : ""
                     }`}
                   >
-                    <div className="w-20 h-20 rounded-full overflow-hidden mb-6 flex-shrink-0 bg-gray-100">
+                    <div className="w-16 h-16 rounded-full overflow-hidden mb-3 flex-shrink-0 bg-gray-100">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -59,16 +59,16 @@ const Pricing = () => {
                     </div>
 
                     <div className="flex-grow">
-                      <h3 className="text-2xl font-medium text-gray-900 mb-1">
+                      <h3 className="text-xl font-medium text-gray-900 mb-1">
                         {member.name}
                       </h3>
-                      <p className="text-gray-400 font-medium mb-6 text-sm">
+                      <p className="text-gray-400 font-medium mb-2 text-sm">
                         {member.role}
                       </p>
                     </div>
 
                     {(member.degree || member.linkedin) && (
-                      <div className="mt-auto pt-4 border-t border-gray-50 flex flex-col items-start gap-4">
+                      <div className="mt-auto pt-3 border-t border-gray-50 flex flex-col items-start gap-2">
                         {member.degree && (
                           <div className="flex items-start text-left">
                             <svg

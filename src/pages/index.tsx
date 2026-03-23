@@ -3,7 +3,7 @@ import React from "react";
 import About from "../components/About";
 import LazyShow from "../components/LazyShow";
 import Pricing from "../components/Pricing";
-import Product from "../components/Product";
+import WhatWeOffer from "../components/WhatWeOffer";
 import Projects from "../components/Projects";
 
 import HeroSection from "../components/HeroSection"; // <-- New combined hero
@@ -14,7 +14,7 @@ const App = () => (
     <HeroSection />
 
     {/* Other sections */}
-    <Product />
+    <WhatWeOffer />
     <LazyShow>
       <Pricing />
     </LazyShow>

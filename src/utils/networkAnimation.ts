@@ -7,14 +7,18 @@ export class NetworkAnimation {
 
   private connectionDistance: number;
 
+  private speed: number;
+
   constructor(
     color: string = "rgba(123, 47, 247, 0.6)",
     particleCount: number = 60,
-    connectionDistance: number = 150
+    connectionDistance: number = 150,
+    speed: number = 1.5
   ) {
     this.color = color;
     this.particleCount = particleCount;
     this.connectionDistance = connectionDistance;
+    this.speed = speed;
   }
 
   public init(width: number, height: number) {
@@ -23,8 +27,8 @@ export class NetworkAnimation {
       this.particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
+        vx: (Math.random() - 0.5) * this.speed,
+        vy: (Math.random() - 0.5) * this.speed,
       });
     }
   }

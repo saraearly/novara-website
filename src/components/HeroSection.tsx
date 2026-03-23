@@ -1,9 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import Header from "./Header";
 import MainHero from "./MainHero";
+import PipelineStoryAnimation from "./PipelineStoryAnimation";
 import Canvas from "./Canvas";
-import HexNetAnimation from "./HexNetAnimation";
 import NetworkGraphAnimation from "./NetworkGraphAnimation";
 
 const HeroSection = () => (
@@ -11,56 +10,48 @@ const HeroSection = () => (
     {/* Header */}
     <Header />
 
-    <section className="relative w-full overflow-visible h-[400px] lg:h-[550px] bg-[#091232]">
-      {/* Animated Gradient Orbs */}
+    <section className="relative w-full overflow-hidden min-h-[600px] lg:min-h-[700px] bg-[#091232]">
+      {/* Subtle gradient orbs */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#7B2FF7] rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob" />
-        <div className="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] bg-[#18D3C5] rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000" />
-        <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] bg-[#7B2FF7] rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-blob animation-delay-4000" />
+        <div className="absolute top-[-20%] left-[-15%] w-[50vw] h-[50vw] bg-[#7B2FF7] rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-blob" />
+        <div className="absolute top-[30%] right-[-10%] w-[40vw] h-[40vw] bg-[#18D3C5] rounded-full mix-blend-screen filter blur-[150px] opacity-15 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-[-30%] left-[30%] w-[50vw] h-[50vw] bg-[#7B2FF7] rounded-full mix-blend-screen filter blur-[180px] opacity-15 animate-blob animation-delay-4000" />
       </div>
 
-      {/* Background Animation (Hex Net) */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none opacity-60">
-        <Canvas height={550} className="w-full h-full">
-          <HexNetAnimation />
+      {/* Background network graph animation */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none opacity-50">
+        <Canvas height={700} className="w-full h-full">
+          <NetworkGraphAnimation
+            color="rgba(255, 255, 255, 0.5)"
+            particleCount={70}
+            connectionDistance={180}
+            speed={0.4}
+          />
         </Canvas>
       </div>
 
-      {/* Gradient overlay */}
+      {/* Main content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-16 lg:pt-40 lg:pb-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left: Text */}
+          <div className="flex-1 w-full lg:w-1/2">
+            <MainHero />
+          </div>
+
+          {/* Right: Service Hub Diagram */}
+          <div className="flex-1 w-full lg:w-1/2">
+            <PipelineStoryAnimation />
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom gradient fade */}
       <div
-        className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none"
+        className="absolute bottom-0 left-0 w-full h-24 z-10 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(90deg, #091232 0%, #151f41 50%, transparent 100%)",
+          background: "linear-gradient(to top, #091232 0%, transparent 100%)",
         }}
       />
-
-      {/* Hero text */}
-      <div className="relative z-20 px-4 sm:px-6 lg:pl-16 flex items-center h-full">
-        <div className="text-left px-4 sm:px-6 lg:pl-16 lg:max-w-none">
-          <MainHero />
-        </div>
-      </div>
-
-      {/* Network Animation replacing Hero image */}
-      <div className="absolute top-0 right-0 w-3/5 h-full lg:h-full lg:left-[40%] lg:w-[60%] z-0">
-        <Canvas height={550} className="w-full h-full opacity-60">
-          <NetworkGraphAnimation color="#18D3C5" particleCount={100} />
-        </Canvas>
-      </div>
-
-      {/* Circular logo at the bottom center */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-30">
-        <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-visible shadow-lg border-4 border-white flex items-center justify-center">
-          <Image
-            src="assets/images/network_bluebackground.svg"
-            alt="Logo"
-            width={128}
-            height={128}
-            className="object-contain"
-          />
-        </div>
-      </div>
     </section>
   </div>
 );
