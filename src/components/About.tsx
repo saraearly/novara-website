@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import config from "../config/index.json";
 
@@ -14,7 +15,13 @@ const About = () => {
     >
       <div className="flex flex-col items-center justify-center">
         <div>
-          <img src="/assets/images/logo.svg" alt={companyName} className="h-6 w-auto" />
+          <Image
+            src="/assets/images/logo.svg"
+            alt={companyName}
+            className="h-6 w-auto"
+            width={24}
+            height={24}
+          />
         </div>
         {sections && sections.length > 0 && (
           <div className="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-4 h-12">
