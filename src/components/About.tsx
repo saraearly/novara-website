@@ -4,7 +4,7 @@ import config from "../config/index.json";
 
 const About = () => {
   const { company, about } = config;
-  const { logo, name: companyName } = company;
+  const { name: companyName } = company;
   const { sections = [] } = about;
 
   return (
@@ -14,7 +14,7 @@ const About = () => {
     >
       <div className="flex flex-col items-center justify-center">
         <div>
-          <img src={logo} alt={companyName} className="h-6 w-auto" />
+          <img src="/assets/images/logo.svg" alt={companyName} className="h-6 w-auto" />
         </div>
         {sections && sections.length > 0 && (
           <div className="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-4 h-12">
