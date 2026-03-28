@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { Link } from "react-scroll";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
-import Image from "next/image";
 import config from "../config/index.json";
 
 const Header = () => {
