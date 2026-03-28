@@ -45,13 +45,10 @@ const Header = () => {
             {/* Logo */}
             <a href="#" className="flex items-center pl-4">
               <span className="sr-only">{companyName}</span>
-              <Image
+              <img
                 src={logo}
                 alt="logo"
-                width={96}
-                height={96}
-                className="h-10 w-auto"
-                priority
+                style={{ height: '24px', width: 'auto' }}
               />
             </a>
 
