@@ -9,17 +9,17 @@ import Projects from "../components/Projects";
 import HeroSection from "../components/HeroSection"; // <-- New combined hero
 
 const App = () => (
-  <div className="bg-background grid gap-y-8 overflow-x-hidden pb-8">
+  <div className="bg-[#0a0e1a] grid gap-y-0 overflow-x-hidden">
     {/* Hero Section */}
     <HeroSection />
 
     {/* Other sections */}
     <WhatWeOffer />
     <LazyShow>
-      <Pricing />
+      <Projects />
     </LazyShow>
     <LazyShow>
-      <Projects />
+      <Pricing />
     </LazyShow>
     <LazyShow>
       <About />

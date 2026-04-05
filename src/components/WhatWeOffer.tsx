@@ -3,7 +3,7 @@ import React, { MutableRefObject, useEffect, useRef, useState, useCallback } fro
 import { motion } from "framer-motion";
 import config from "../config/index.json";
 import OfferingHubDiagram from "./OfferingHubDiagram";
-import OfferingDetailPanel from "./OfferingDetailPanel";
+import OfferingVisualExample from "./OfferingVisualExample";
 
 function useOnScreen(
   ref: MutableRefObject<HTMLDivElement | null>,
@@ -33,7 +33,7 @@ function useOnScreen(
   return isIntersecting;
 }
 
-const AUTO_ROTATE_INTERVAL = 4000;
+const AUTO_ROTATE_INTERVAL = 6000;
 
 const WhatWeOffer = () => {
   const { product } = config;
@@ -75,11 +75,11 @@ const WhatWeOffer = () => {
   }, []);
 
   return (
-    <section className="bg-background py-6" id="product" ref={sectionRef}>
-      <div className="container max-w-6xl mx-auto m-4 px-4">
+    <section className="bg-white py-12 lg:py-16" id="product" ref={sectionRef}>
+      <div className="container max-w-7xl mx-auto px-4">
         {/* Heading */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
@@ -92,52 +92,67 @@ const WhatWeOffer = () => {
           </p>
         </motion.div>
 
-        {/* Mobile: Tab pills */}
+        {/* Mobile: Tab pills + visual */}
         {isMobile && (
-          <motion.div
-            className="flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-hide"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            {items.map((item, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => handleSelect(i)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeIndex === i
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {(item as any)?.shortTitle || item?.title}
-              </button>
-            ))}
-          </motion.div>
+          <>
+            <motion.div
+              className="flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-hide"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              {items.map((item, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handleSelect(i)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeIndex === i
+                      ? "bg-primary text-white shadow-md"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {(item as any)?.shortTitle || item?.title}
+                </button>
+              ))}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <OfferingVisualExample
+                activeIndex={activeIndex}
+                isInView={isInView}
+              />
+            </motion.div>
+          </>
         )}
 
-        {/* Desktop: Hub diagram */}
+        {/* Desktop: Hub diagram (left) + Visual example (right) */}
         {!isMobile && (
-          <OfferingHubDiagram
-            activeIndex={activeIndex}
-            onSelect={handleSelect}
-            isInView={isInView}
-            items={items as Array<{ shortTitle?: string; title: string }>}
-          />
+          <div className="flex items-start gap-6">
+            <div className="w-1/2 flex-shrink-0">
+              <OfferingHubDiagram
+                activeIndex={activeIndex}
+                onSelect={handleSelect}
+                isInView={isInView}
+                items={items as Array<{ shortTitle?: string; title: string }>}
+              />
+            </div>
+            <motion.div
+              className="w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <OfferingVisualExample
+                activeIndex={activeIndex}
+                isInView={isInView}
+              />
+            </motion.div>
+          </div>
         )}
-
-        {/* Detail panel */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
-        >
-          <OfferingDetailPanel
-            item={items[activeIndex] as any}
-            activeIndex={activeIndex}
-          />
-        </motion.div>
       </div>
     </section>
   );

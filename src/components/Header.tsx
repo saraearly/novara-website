@@ -45,9 +45,13 @@ const Header = () => {
             <a href="#" className="flex items-center pl-4">
               <span className="sr-only">{companyName}</span>
               <img
-                src={logo}
+                src={isScrolled ? "/assets/images/logo.png" : logo}
                 alt="logo"
-                style={{ height: "24px", width: "auto" }}
+                className="transition-all duration-300"
+                style={{
+                  height: "24px",
+                  width: "auto",
+                }}
               />
             </a>
 

@@ -9,12 +9,12 @@
       "href": "product"
     },
     {
-      "name": "Our Team",
-      "href": "pricing"
+      "name": "Products",
+      "href": "projects"
     },
     {
-      "name": "Our Projects",
-      "href": "projects"
+      "name": "Our Team",
+      "href": "pricing"
     }
   ],
   "mainHero": {
@@ -281,7 +281,7 @@
           {
             "name": "Sara Early",
             "role": "CEO and Co-Founder",
-            "degree": "Ph.D. student in Biomedical Engineering",
+            "degree": "Ph.D. Candidate in Biomedical Engineering",
             "image": "/assets/images/Sara.JPG",
             "linkedin": "https://www.linkedin.com/in/saraearly"
           },
@@ -313,7 +313,7 @@
           },
           {
             "name": "Kimberly Amador",
-            "role": "Medical Image Specialist",
+            "role": "Chief AI Scientist",
             "degree": "Ph.D. in Biomedical Engineering",
             "image": "/assets/images/Kim.webp",
             "linkedin": "https://www.linkedin.com/in/kimberlyamador/"
